@@ -3,6 +3,7 @@ package main
 import (
 	"log"
 	"os"
+	"strconv"
 	"time"
 
 	"github.com/joho/godotenv"
@@ -24,6 +25,8 @@ func main() {
 		os.Getenv("ACCESS_SECRET"),
 	)
 
+	rt := strconv.FormatInt(os.Getenv("REFRESH_TIME"), 10)
+
 	for {
 		err = Monitor(client, os.Getenv("USER_ID"))
 
@@ -31,6 +34,6 @@ func main() {
 			log.Fatal(err)
 		}
 
-		time.Sleep(time.Duration(os.Getenv("REFRESH_TIME")) * time.Minute)
+		time.Sleep(time.Duration(rt) * time.Minute)
 	}
 }
