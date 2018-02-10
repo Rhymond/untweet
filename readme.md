@@ -7,7 +7,7 @@ Get Direct Message who unfollowed you!
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 # Install
-- Create an app on [![Twitter Developer](developer.twitter.com)]
+- Create an app on [Twitter Developer](developer.twitter.com)]
 - ```go get -u github.com/Rhymond/untweet```
 - ```cd $GOPATH\src\github.com\rhymond\untweet```
 - ```dep init```
