@@ -8,6 +8,8 @@ import (
 	"github.com/joho/godotenv"
 )
 
+// Load and Set settings variables from .env file
+// and Monitor given user ID profile for changes
 func main() {
 	err := godotenv.Load()
 
@@ -29,6 +31,6 @@ func main() {
 			log.Fatal(err)
 		}
 
-		time.Sleep(time.Duration(1) * time.Minute)
+		time.Sleep(time.Duration(os.Getenv("REFRESH_TIME")) * time.Minute)
 	}
 }

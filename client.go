@@ -11,14 +11,18 @@ import (
 	"github.com/kurrik/twittergo"
 )
 
+// Client struct extends instance of TwitterGo
 type Client struct {
 	*twittergo.Client
 }
 
+// FollowersList keeps followers ID's list
 type FollowersList struct {
 	Ids []int64
 }
 
+// NewClient creates new Client instance by using
+// Customer Key, Customer Secret, Auth Token and Auth Secret
 func NewClient(ck, cs, at, as string) *Client {
 	oauthConfig := &oauth1a.ClientConfig{
 		ConsumerKey:    ck,
@@ -29,6 +33,7 @@ func NewClient(ck, cs, at, as string) *Client {
 	return &Client{twittergo.NewClient(oauthConfig, user)}
 }
 
+// Notify send direct message to given user ID
 func (c *Client) Notify(userID, text string) error {
 	query := url.Values{}
 	query.Set("user_id", userID)
@@ -39,6 +44,7 @@ func (c *Client) Notify(userID, text string) error {
 	return err
 }
 
+// GetUserInfo gets user information by given user ID
 func (c *Client) GetUserInfo(userID string) (*twittergo.User, error) {
 	query := url.Values{}
 	query.Set("user_id", userID)
@@ -59,6 +65,7 @@ func (c *Client) GetUserInfo(userID string) (*twittergo.User, error) {
 	return results, nil
 }
 
+// GetFollowersList gets followers list by given user ID
 func (c *Client) GetFollowersList(userID string) (*FollowersList, error) {
 	query := url.Values{}
 	query.Set("user_id", userID)
@@ -79,6 +86,8 @@ func (c *Client) GetFollowersList(userID string) (*FollowersList, error) {
 	return results, nil
 }
 
+// Send sends request to twitter API using twitterGo package
+// It logs request and rate limit data
 func (c *Client) Send(reqType, endpoint string, query url.Values) (*twittergo.APIResponse, error) {
 	url := fmt.Sprintf("%s?%v", endpoint, query.Encode())
 
