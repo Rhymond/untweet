@@ -7,10 +7,12 @@ Get Direct Message who unfollowed you!
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 # Install
-- ```go get github.com/Rhymond/untweet```
 - Create an app on [![Twitter Developer](developer.twitter.com)]
+- ```go get -u github.com/Rhymond/untweet```
+- ```cd $GOPATH\src\github.com\rhymond\untweet```
+- ```dep init```
 - Copy ```.env.example``` to ```.env``` and drop in API keys/tokens
-- just ```untweet```
+- ```go install``` and run ```untweet``` (make sure your $GOPATH/bin is in PATH)
 
 Contributing
 -
@@ -20,7 +22,6 @@ Please use GitHub issues and Pull Requests for Contributing.
 License
 -
 The MIT License (MIT). Please see License File for more information.
-
 
 
 [![forthebadge](http://forthebadge.com/images/badges/built-with-love.svg)](https://github.com/Rhymond/go-money)
