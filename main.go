@@ -25,7 +25,11 @@ func main() {
 		os.Getenv("ACCESS_SECRET"),
 	)
 
-	rt := strconv.FormatInt(os.Getenv("REFRESH_TIME"), 10)
+	rt, err := strconv.Atoi(os.Getenv("REFRESH_TIME"))
+
+	if err != nil {
+		log.Fatal("Can't convert string to integer")
+	}
 
 	for {
 		err = Monitor(client, os.Getenv("USER_ID"))
